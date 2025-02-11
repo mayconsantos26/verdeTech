@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="src/css/bootstrap.min.css" rel="stylesheet">
+    <script src="src/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>VerdeTech Farm - Login</title>
+    <link rel="icon" href="img/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="d-flex justify-content-between align-items-center container py-3">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt=""></a>
+            </div>
+            <div>
+                <ul class="d-flex justify-content-center align-items-center">
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="produtos.html">PRODUTOS</a></li>
+                    <li><a href="entrega.html">ENTREGA</a></li>
+                    <li><a href="contato.html">FALE CONOSCO</a></li>
+                </ul>       
+            </div>
+            <div class="d-flex">
+                <ul>
+                    <li class="mr-0 position-relative">
+                        <a href="carrinho.html">
+                            <img src="../img/carrinho-de-compras.png" alt="Carrinho">
+                            <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        </a>
+                    </li>
+                    <li><a href="login.html"><img src="../img/perfil.png" alt="Perfil"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <div class="container justify-content-center align-items-center">
+                <div id="statusLogin" class="alert alert-info" style="display: none;"></div> <!-- Status de login -->
+                <!-- Botão de logout -->
+                <button id="logoutButton" class="btn-logout m-0 mb-4" style="display: none;">Sair</button>
+                <h2>LOGIN</h2>
+
+                <div class="login container justify-content-center">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                        </div>
+                        <button class="btn" type="submit"><b>Entrar</b></button>
+                        <div class="link">
+                            <b><p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p></b>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            const statusLogin = document.getElementById('statusLogin');
+            const logoutButton = document.getElementById('logoutButton');
+
+            // Função de login
+            function validarLogin(email, senha) {
+                const usuarios = JSON.parse(sessionStorage.getItem('usuarios')) || [];
+                const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+                return usuario || null; // Retorna o usuário encontrado ou null
+            }
+
+            // Verificar se já está logado
+            const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+            if (usuarioLogado) {
+                statusLogin.textContent = `Você está logado como ${usuarioLogado.nome}.`;
+                statusLogin.style.display = 'block';
+                logoutButton.style.display = 'inline-block'; // Exibe o botão de logout
+            }
+
+            // Evento de logout
+            logoutButton.addEventListener('click', () => {
+                sessionStorage.removeItem('usuarioLogado'); // Limpa os dados do usuário logado
+                alert('Você foi deslogado!');
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            });
+
+            // Evento de submit do formulário de login
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const email = document.getElementById('email').value.trim();
+                const senha = document.getElementById('senha').value.trim();
+
+                const usuario = validarLogin(email, senha);
+
+                if (usuario) {
+                    alert(`Bem-vindo(a), ${usuario.nome}!`);
+                    sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario)); // Salva o usuário logado na sessão
+                    window.location.href = 'index.html';
+                } else {
+                    alert('E-mail ou senha inválidos. Tente novamente.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

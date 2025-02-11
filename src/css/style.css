@@ -1,0 +1,297 @@
+/* ====== Estrutura ====== */
+
+body{
+	font: 16px Arial, Helvetica, sans-serif;
+}
+
+p {
+    line-height: 1.5; 
+}
+
+/* ====== Cabeçalho ====== */
+
+header {
+    position: relative;
+    z-index: 1;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/fundoagro.jpg);
+    background-size: cover;
+    background-position: right center;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+header .logo img {
+    max-height: 115px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+nav ul {
+    display: inline-flex;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);  
+}
+
+nav ul li {
+    margin: 0 15px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #000000;
+	text-decoration: none;
+    font-size: 17px;
+	font-weight: 700;
+    padding: 12px 0;
+}
+
+nav, a:hover {
+    transition: all;
+    opacity: 0.7;
+}
+
+nav, a:active {
+    color: #b96c13;
+}
+
+/* ====== Login ====== */
+
+.login {
+    width: 300px;
+}
+
+.login label {
+    display: block;
+}
+
+.login .link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login .link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login .link a:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    width: 50px;
+    padding: 6px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.btn-logout:hover {
+    background-color: #45a049;
+}
+
+/* ====== Cadastro ====== */
+
+.cadastro {
+    max-width: 800px;
+}
+
+.cadastro form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}   
+
+.form-group select {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* ===== Produtos ===== */
+
+/* Lista de Produtos */
+.product-list {
+    gap: 20px;
+}
+
+.product-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+    max-width: 100px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-top: 10px;
+    height: 40px;
+}
+
+.product-price {
+    color: #2a9d8f;
+    margin-top: 5px;
+}
+
+.add-cart {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-cart img {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+/* Texto Promocional */
+.promo-text {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 30px 0;
+}
+
+/* ===== Entrega ===== */
+#map {
+    width: 70%;
+    height: 100vh;
+}
+
+.info {
+    width: 30%;
+    padding: 20px;
+    background-color: #a5d973;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ===== Meu Carrinho ===== */
+.btn-carrinho {
+    width: 120px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.compras {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ====== Contents Default ====== */
+
+main {
+    margin: 50px 0;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/fundo_main.jpg);
+    background-size: cover;
+    background-position: right center;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* ====== Default ===== */
+
+a {
+    text-decoration: none;
+    color: #000000;
+    opacity: 0.7s;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-bottom: 40px;
+    font-size: 35px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+form {
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(87, 231, 123, 0.5);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+form input {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="src/css/bootstrap.min.css" rel="stylesheet">
+    <script src="src/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>VerdeTech Farm - Home</title>
+    <link rel="icon" href="img/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="d-flex justify-content-between align-items-center container py-3">
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt=""></a>
+            </div>
+            <div>
+                <ul class="d-flex justify-content-center align-items-center">
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="produtos.html">PRODUTOS</a></li>
+                    <li><a href="entrega.html">ENTREGA</a></li>
+                    <li><a href="contato.html">FALE CONOSCO</a></li>
+                </ul>       
+            </div>
+            <div class="d-flex">
+                <ul>
+                    <li class="mr-0 position-relative">
+                        <a href="carrinho.html">
+                            <img src="../img/carrinho-de-compras.png" alt="Carrinho">
+                            <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        </a>
+                    </li>
+                    <li><a href="login.html"><img src="../img/perfil.png" alt="Perfil"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="d-flex align-items-center mb-5">
+                <p class="mr-2 mb-0" id="nomeUsuario"></p>
+                <button id="logout" class="btn-logout" style="display: none;">Sair</button>       
+            </div>
+            <h1>HOME</h1>
+            <div class="text-center">
+                <h2><b>MAKE YOUR BEST. DO IT FOR YOU!</b></h2>
+                <p><b>A VERDETECH FARM NASCEU PELO INTERESSE MÚTUO DE SEUS FUNDADORES EM VER FAMÍLIAS FELIZES E COM ALIMENTOS DE QUALIDADE. SOMOS AMBICIOSOS, ENTÃO NOSSAS METAS DE EXCELÊNCIA SÃO MUTÁVEIS, SEMPRE SE EXPANDINDO PARA CADA VEZ MAIS SATISFAZER NOSSOS CLIENTES!</b></p>
+                <p><b>NOSSO OBJETIVO É PROMOVER O FÁCIL ACESSO E O BAIXO CUSTO DE ALIMENTOS DE ALTA QUALIDADE PARA A POPULAÇÃO. ATRAVÉS DESSA INICIATIVA, BUSCAMOS NÃO APENAS COMBATER A INSEGURANÇA ALIMENTAR, MAS TAMBÉM CONTRIBUIR PARA A SUSTENTABILIDADE AMBIENTAL E A SAÚDE DA COMUNIDADE.</b></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nomeUsuario = document.getElementById('nomeUsuario');
+            const logoutBtn = document.getElementById('logout');
+
+            // Verifica se existe um usuário logado no sessionStorage
+            const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+
+            if (usuarioLogado) {
+                // Se o usuário estiver logado, exibe o nome e o botão de logout
+                nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
+                logoutBtn.style.display = 'block'; // Torna o botão de logout visível
+            } else {
+                // Se não houver usuário logado, o botão não aparece
+                nomeUsuario.textContent = 'Você não está logado.';
+                logoutBtn.style.display = 'none'; // Oculta o botão de logout
+            }
+
+            // Adiciona a funcionalidade de logout
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
+                alert('Você saiu da sua conta.');
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            });
+
+            // Função para atualizar o contador do carrinho
+            function updateCartCounter() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCounter = document.getElementById('cart-counter');
+                cartCounter.textContent = cart.length; // Define o número total de itens no carrinho
+        
+                // Esconde o contador se não houver itens
+                cartCounter.style.display = cart.length > 0 ? 'block' : 'none';
+            }
+
+            // Atualizar contador do carrinho ao carregar a página
+            updateCartCounter();
+        });
+    </script>
+
+</body>
+<script src="index.js"></script>
+</html>
