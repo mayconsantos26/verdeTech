@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,7 @@
 </head>
 <body>
     <header>
-        <div id="header"></div> <!-- Inclui o header através do JavaScript -->
-    </header> 
+        <div id="header"></div> 
 
     <main>
         <section class="container">
@@ -30,7 +29,7 @@
     </main>
 
     <footer>
-        <div id="footer"></div> <!-- Inclui o footer através do JavaScript -->
+        <div id="footer"></div>
     </footer>
 
     <script>
@@ -38,40 +37,36 @@
         document.addEventListener('DOMContentLoaded', () => {
             const nomeUsuario = document.getElementById('nomeUsuario');
             const logoutBtn = document.getElementById('logout');
-
-            // Verifica se existe um usuário logado no sessionStorage
-            const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
-
-            if (usuarioLogado) {
-                // Se o usuário estiver logado, exibe o nome e o botão de logout
-                nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
-                logoutBtn.style.display = 'block'; // Torna o botão de logout visível
-            } else {
-                // Se não houver usuário logado, o botão não aparece
-                nomeUsuario.textContent = 'Você não está logado.';
-                logoutBtn.style.display = 'none'; // Oculta o botão de logout
-            }
-
-            // Adiciona a funcionalidade de logout
-            logoutBtn.addEventListener('click', () => {
-                sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
-                alert('Você saiu da sua conta.');
-                window.location.href = 'login.html'; // Redireciona para a página de login
-            });
-        });
-        
-        document.addEventListener('DOMContentLoaded', () => {
             const cartItemsContainer = document.getElementById('cart-items');
             const checkoutButton = document.getElementById('checkout');
             const cartCounter = document.getElementById('cart-counter');
             const totalElement = document.getElementById('valor-total');
 
+            // Verifica se existe um usuário logado no sessionStorage
+            const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+            if (usuarioLogado) {
+                nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
+                logoutBtn.style.display = 'block';
+            } else {
+                nomeUsuario.textContent = 'Você não está logado.';
+                logoutBtn.style.display = 'none';
+            }
+
+            // Função de logout
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('usuarioLogado');
+                alert('Você saiu da sua conta.');
+                window.location.href = 'login.html';
+            });
+
             // Recupera itens do carrinho do localStorage
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             function updateCartCounter() {
-                cartCounter.textContent = cart.length;
-                cartCounter.style.display = cart.length > 0 ? 'inline-block' : 'none';
+                if (cartCounter) {
+                    cartCounter.textContent = cart.length;
+                    cartCounter.style.display = cart.length > 0 ? 'inline-block' : 'none';
+                }
             }
 
             function renderCartItems() {
@@ -90,7 +85,7 @@
                             <span>${item.name}</span>
                         </div>
                         <div>
-                            <span class="preco-item">${item.price}</span>
+                            <span class="preco-item">R$${parseFloat(item.price).toFixed(2).replace('.', ',')}</span>
                             <button class="btn-carrinho btn-danger btn-sm ml-2" data-index="${index}">Remover</button>
                         </div>
                     `;
@@ -101,10 +96,7 @@
             }
 
             function calcularTotal() {
-                let total = cart.reduce((acc, item) => {
-                    const valorTexto = item.price.replace('R$', '').replace(',', '.');
-                    return acc + parseFloat(valorTexto);
-                }, 0);
+                let total = cart.reduce((acc, item) => acc + parseFloat(item.price.replace('R$', '').replace(',', '.')), 0);
                 totalElement.textContent = total.toFixed(2).replace('.', ',');
             }
 
@@ -150,4 +142,4 @@
     
     <script src="../src/js/include.js"></script>
 </body> 
-</html>
+</html> -->

@@ -23,7 +23,9 @@
             <h2>
                 PRODUTOS
             </h2>
-            <div class="product-list d-flex flex-wrap p-2 justify-content-around">
+
+
+            <!-- <div class="product-list d-flex flex-wrap p-2 justify-content-around">
                 <div class="product-item">
                     <img src="../src/img/morango.jpeg" alt="Morangos Orgânicos">
                     <p class="product-name">MORANGOS ORGÂNICOS</p>
@@ -48,7 +50,7 @@
                     <p class="product-price">R$7,99/UNIDADE</p>
                     <button class="btn">ADICIONAR AO CARRINHO</button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
 
@@ -57,67 +59,31 @@
     </footer>
     
     <script>
-
         document.addEventListener('DOMContentLoaded', () => {
             const nomeUsuario = document.getElementById('nomeUsuario');
             const logoutBtn = document.getElementById('logout');
-
+            const cartCounter = document.getElementById('cart-counter');
+    
             // Verifica se existe um usuário logado no sessionStorage
             const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
-
+    
             if (usuarioLogado) {
-                // Se o usuário estiver logado, exibe o nome e o botão de logout
                 nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
-                logoutBtn.style.display = 'block'; // Torna o botão de logout visível
+                logoutBtn.style.display = 'block';
             } else {
-                // Se não houver usuário logado, o botão não aparece
                 nomeUsuario.textContent = 'Você não está logado.';
-                logoutBtn.style.display = 'none'; // Oculta o botão de logout
+                logoutBtn.style.display = 'none';
             }
-
-            // Adiciona a funcionalidade de logout
+    
+            // Função de logout
             logoutBtn.addEventListener('click', () => {
-                sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
+                sessionStorage.removeItem('usuarioLogado');
                 alert('Você saiu da sua conta.');
-                window.location.href = 'login.html'; // Redireciona para a página de login
+                window.location.href = 'login.html';
             });
         });
-
-        // Função para atualizar o contador do carrinho
-        function updateCartCounter() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartCounter = document.getElementById('cart-counter');
-            cartCounter.textContent = cart.length; // Define o número total de itens no carrinho
-
-            // Esconde o contador se não houver itens
-            cartCounter.style.display = cart.length > 0 ? 'block' : 'none';
-        }
-
-        // Adicionar produto ao carrinho
-        document.querySelectorAll('.product-item .btn').forEach(button => {
-            button.addEventListener('click', () => {
-            const productItem = button.closest('.product-item');
-            const product = {
-                name: productItem.querySelector('.product-name').textContent,
-                price: productItem.querySelector('.product-price').textContent,
-                image: productItem.querySelector('img').src,
-            };
-
-            // Adicionar ao localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(product);
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Atualiza o contador do carrinho
-            updateCartCounter();
-
-            alert('Produto adicionado ao carrinho!');
-            });
-        });
-
-        // Atualizar contador do carrinho ao carregar a página
-        document.addEventListener('DOMContentLoaded', updateCartCounter);
     </script>
+    
 
     <script src="../src/js/include.js"></script> 
 </body>
