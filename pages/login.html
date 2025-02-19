@@ -53,48 +53,60 @@
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.querySelector('form');
             const statusLogin = document.getElementById('statusLogin');
-            const logoutButton = document.getElementById('logoutButton');
+            const logoutButton = document.getElementById('logout'); // Corrigido o ID
+            const nomeUsuario = document.getElementById('nomeUsuario'); // Exibir o nome do usuário logado
 
-            // Função de login
+            // Função de validação de login
             function validarLogin(email, senha) {
                 const usuarios = JSON.parse(sessionStorage.getItem('usuarios')) || [];
-                const usuario = usuarios.find(u => u.email === email && u.senha === senha);
-                return usuario || null; // Retorna o usuário encontrado ou null
+                return usuarios.find(u => u.email === email && u.senha === senha) || null;
             }
 
-            // Verificar se já está logado
+            // Verificar se já existe um usuário logado
             const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
             if (usuarioLogado) {
-                statusLogin.textContent = `Você está logado como ${usuarioLogado.nome}.`;
-                statusLogin.style.display = 'block';
-                logoutButton.style.display = 'inline-block'; // Exibe o botão de logout
+                if (statusLogin) {
+                    statusLogin.textContent = `Você está logado como ${usuarioLogado.nome}.`;
+                    statusLogin.style.display = 'block';
+                }
+                if (nomeUsuario) {
+                    nomeUsuario.textContent = usuarioLogado.nome;
+                }
+                if (logoutButton) {
+                    logoutButton.style.display = 'inline-block';
+                }
             }
 
-            // Evento de logout
-            logoutButton.addEventListener('click', () => {
-                sessionStorage.removeItem('usuarioLogado'); // Limpa os dados do usuário logado
-                alert('Você foi deslogado!');
-                window.location.href = 'login.html'; // Redireciona para a página de login
-            });
+            // Evento de logout com verificação para evitar erro
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
+                    alert('Você foi deslogado!');
+                    window.location.href = 'login.html'; // Redireciona para login
+                });
+            }
 
             // Evento de submit do formulário de login
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
+            if (form) {
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
 
-                const email = document.getElementById('email').value.trim();
-                const senha = document.getElementById('senha').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const senha = document.getElementById('senha').value.trim();
 
-                const usuario = validarLogin(email, senha);
+                    const usuario = validarLogin(email, senha);
 
-                if (usuario) {
-                    alert(`Bem-vindo(a), ${usuario.nome}!`);
-                    sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario)); // Salva o usuário logado na sessão
-                    window.location.href = 'index.html';
-                } else {
-                    alert('E-mail ou senha inválidos. Tente novamente.');
-                }
-            });
+                    if (usuario) {
+                        alert(`Bem-vindo(a), ${usuario.nome}!`);
+                        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+                        window.location.href = 'index.html'; // Redireciona para a página inicial
+                    } else {
+                        alert('E-mail ou senha inválidos. Tente novamente.');
+                    }
+                });
+            }
         });
+
     </script>
     
     <script src="../src/js/include.js"></script>

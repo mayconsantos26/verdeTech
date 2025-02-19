@@ -163,6 +163,16 @@ footer {
     border-radius: 4px;
 }
 
+/* ===== Contato ===== */
+
+.contato-form {
+    width: 300px;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+
 /* ===== Produtos ===== */
 
 /* Lista de Produtos */
@@ -198,34 +208,6 @@ footer {
     margin-top: 5px;
 }
 
-.add-cart {
-    background-color: #2a9d8f;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.add-cart img {
-    width: 16px;
-    height: 16px;
-    margin-right: 5px;
-}
-
-/* Texto Promocional */
-.promo-text {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 30px 0;
-}
-
 /* ====== Default ===== */
 
 a {
@@ -234,6 +216,9 @@ a {
     opacity: 0.7s;
 }
 
+b {
+    text-transform: uppercase;
+}
 p {
     line-height: 1.5;
 }
@@ -241,6 +226,7 @@ p {
 h1, h2, h3, h4, h5 {
     margin-bottom: 40px;
     font-size: 35px;
+    font-weight: bold;
 }
 
 .btn {
