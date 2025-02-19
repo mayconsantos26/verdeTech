@@ -17,9 +17,10 @@
     <main>
         <section class="container">
             <div class="justify-content-center align-items-center">
-                <div id="statusLogin" class="alert alert-info" style="display: none;"></div> <!-- Status de login -->
-                <!-- Botão de logout -->
-                <button id="logoutButton" class="btn-logout m-0 mb-4" style="display: none;">Sair</button>
+                <div class="d-flex align-items-center mb-5">
+                    <p class="mr-2 mb-0" id="nomeUsuario"></p>
+                    <button id="logout" class="btn-logout" style="display: none;">Sair</button>       
+                </div>
                 <h2>LOGIN</h2>
 
                 <div class="login container justify-content-center">
@@ -32,7 +33,9 @@
                             <label for="senha">Senha</label>
                             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
                         </div>
-                        <button class="btn" type="submit"><b>Entrar</b></button>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn" type="submit"><b>Entrar</b></button>
+                        </div>
                         <div class="link">
                             <b><p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p></b>
                         </div>

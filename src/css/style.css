@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .btn {
-    width: 100%;
+    width: 200px;
     padding: 10px;
     background-color: #4CAF50;
     color: #fff;
@@ -256,7 +256,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .btn:hover {
-    background-color: #45a049;
+    background-color: #45a049 !important;
+    color: #fff;
 }
 
 form {
