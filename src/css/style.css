@@ -5,7 +5,7 @@ body{
 }
 
 main {
-    margin: 40px;
+    margin: 60px 0;
 }
 
 /* main::before {
@@ -87,7 +87,8 @@ nav, a:active {
 /* Rodapé */
 
 footer {
-    position: fixed;
+    position: relative;
+    z-index: 1;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -170,7 +171,6 @@ footer {
 }
 
 .product-item {
-    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
@@ -180,7 +180,7 @@ footer {
 }
 
 .product-item img {
-    max-width: 100px;
+    max-width: 120px;
     height: 90px;
     border-radius: 5px;
 }
@@ -188,6 +188,8 @@ footer {
 .product-name {
     font-weight: bold;
     margin-top: 10px;
+    font-size: 15px;
+    margin-bottom: 0;
     height: 40px;
 }
 
