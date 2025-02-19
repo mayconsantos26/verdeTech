@@ -62,24 +62,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             const nomeUsuario = document.getElementById('nomeUsuario');
             const logoutBtn = document.getElementById('logout');
-            const cartCounter = document.getElementById('cart-counter');
-    
+
             // Verifica se existe um usuário logado no sessionStorage
             const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
-    
+
             if (usuarioLogado) {
+                // Se o usuário estiver logado, exibe o nome e o botão de logout
                 nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
-                logoutBtn.style.display = 'block';
+                logoutBtn.style.display = 'block'; // Torna o botão de logout visível
             } else {
+                // Se não houver usuário logado, o botão não aparece
                 nomeUsuario.textContent = 'Você não está logado.';
-                logoutBtn.style.display = 'none';
+                logoutBtn.style.display = 'none'; // Oculta o botão de logout
             }
-    
-            // Função de logout
+            
+            // Adiciona a funcionalidade de logout
             logoutBtn.addEventListener('click', () => {
-                sessionStorage.removeItem('usuarioLogado');
+                sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
                 alert('Você saiu da sua conta.');
-                window.location.href = 'login.html';
+                window.location.href = 'login.html'; // Redireciona para a página de login
             });
         });
     </script>

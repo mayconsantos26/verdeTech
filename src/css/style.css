@@ -4,9 +4,23 @@ body{
 	font: 16px Arial, Helvetica, sans-serif;
 }
 
-p {
-    line-height: 1.5; 
+main {
+    margin: 40px;
 }
+
+/* main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/fundo_main.jpg);
+    background-size: cover;
+    background-position: right center;
+    opacity: 0.5;
+    z-index: -999;
+} */
 
 /* ====== Cabeçalho ====== */
 
@@ -70,6 +84,23 @@ nav, a:active {
     color: #b96c13;
 }
 
+/* Rodapé */
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+}
+
+.p footer {
+    margin: 0;
+}
+
 /* ====== Login ====== */
 
 .login {
@@ -129,17 +160,6 @@ nav, a:active {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-/* ====== Rodapé ====== */
-footer {
-    background-color: #333;
-    color: #fff;
-}
-
-p.footer {
-    margin-bottom: 0;
-    padding: 0;
 }
 
 /* ===== Produtos ===== */
@@ -204,64 +224,16 @@ p.footer {
     margin: 30px 0;
 }
 
-/* ===== Entrega ===== */
-#map {
-    width: 70%;
-    height: 100vh;
-}
-
-.info {
-    width: 30%;
-    padding: 20px;
-    background-color: #a5d973;
-    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-
-/* ===== Meu Carrinho ===== */
-.btn-carrinho {
-    width: 120px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.compras {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-/* ====== Contents Default ====== */
-
-main {
-    margin: 50px 0;
-}
-
-main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(../img/fundo_main.jpg);
-    background-size: cover;
-    background-position: right center;
-    opacity: 0.4;
-    z-index: -1;
-}
-
 /* ====== Default ===== */
 
 a {
     text-decoration: none;
     color: #000000;
     opacity: 0.7s;
+}
+
+p {
+    line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5 {

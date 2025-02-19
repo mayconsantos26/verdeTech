@@ -46,43 +46,27 @@
         document.addEventListener('DOMContentLoaded', () => {
             const nomeUsuario = document.getElementById('nomeUsuario');
             const logoutBtn = document.getElementById('logout');
-            const cartCounter = document.getElementById('cart-counter');
 
             // Verifica se existe um usuário logado no sessionStorage
             const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
 
             if (usuarioLogado) {
-                // Exibe o nome do usuário e o botão de logout
-                if (nomeUsuario) nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
-                if (logoutBtn) logoutBtn.style.display = 'block';
+                // Se o usuário estiver logado, exibe o nome e o botão de logout
+                nomeUsuario.textContent = `Bem-vindo(a), ${usuarioLogado.nome}!`;
+                logoutBtn.style.display = 'block'; // Torna o botão de logout visível
             } else {
-                // Se não houver usuário logado, esconde o botão
-                if (nomeUsuario) nomeUsuario.textContent = 'Você não está logado.';
-                if (logoutBtn) logoutBtn.style.display = 'none';
+                // Se não houver usuário logado, o botão não aparece
+                nomeUsuario.textContent = 'Você não está logado.';
+                logoutBtn.style.display = 'none'; // Oculta o botão de logout
             }
-
+            
             // Adiciona a funcionalidade de logout
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', () => {
-                    sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
-                    alert('Você saiu da sua conta.');
-                    window.location.href = 'login.html'; // Redireciona para login
-                });
-            }
-
-            // Atualiza o contador do carrinho
-            function updateCartCounter() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                if (cartCounter) {
-                    cartCounter.textContent = cart.length;
-                    cartCounter.style.display = cart.length > 0 ? 'block' : 'none';
-                }
-            }
-
-            updateCartCounter(); // Atualiza o contador ao carregar a página
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
+                alert('Você saiu da sua conta.');
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            });
         });
-
     </script>
 
     <script src="../src/js/include.js"></script>
